@@ -2,9 +2,9 @@ require('dotenv').config();
 const SpotifyWebApi = require('spotify-web-api-node');
 const express = require('express');
 const util = require('util');
-const router = express.Router();
-const path = require('path');
 const bodyParser = require('body-parser')
+const cors = require('cors');
+const strip = require('strip-color');
 
 const app = express();
 
@@ -15,16 +15,7 @@ const spotifyApi = new SpotifyWebApi({
 
 });
 
-// spotifyApi.setAccessToken(process.env.ACCESS);
-
-// spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE', {limit:10, offset:20}).then(
-//     function(data) {
-//         console.log('Artist albums', data.body);
-//     },
-//     function(err){
-//         console.error(err);
-//     }
-// );
+app.use(cors());
 
 spotifyApi.clientCredentialsGrant().then(
     function(data) {
@@ -41,16 +32,21 @@ spotifyApi.clientCredentialsGrant().then(
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.post('/post-test', (request, response) => {
-    spotifyApi.searchPlaylists(request.body.theme)
+app.get("/post-test", (req, res) => {
+    const theme = req.query.theme
+    let randomPlayList = Math.floor(Math.random() * 10);
+    let playList;
+
+    spotifyApi.searchPlaylists(theme)
     .then(function(data) {
-        let playList = util.inspect(data.body.playlists.items[0].id, false, null, true);
-        console.log('Found playlists are', util.inspect(data.body.playlists.items[0].id, false, null, true));
+        playList = util.inspect(data.body.playlists.items[randomPlayList].id, false, null, true);
+        console.log('Found playlists are', util.inspect(data.body.playlists.items[randomPlayList].id, false, null, true));
+        quotesRemoved = playList.replace(/[']/g, "");
+        res.send('https://open.spotify.com/embed/playlist/' + `${strip(quotesRemoved)}` + '?utm_source=generator');
     }, function(err) {
         console.log('Something went wrong!', err);
     });
-    response.sendStatus(200);
-});
+})
 
 
 app.listen(8888, () => console.log("Started on port 8888"));

@@ -1,16 +1,23 @@
 <!doctype html>
 <html>
   <head>
-    <title>Example of the Authorization Code flow with Spotify</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <title>Example of base webpage with Spotify embed</title>
   </head>
 
   <body>
 
     <h1>Test</h1>
-    <iframe id="spot" src="https://open.spotify.com/embed/album/08bROKoMarHS0jRzZOEv08" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    <button onclick="generatePlaylist()">Generate Playlist</button>
+    <p id="playList">
 
-    <script src="/index.js"></script>
+    </p>
+
+    <iframe id="spot" src="" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+    <!-- Example URL -->
+    <!-- <iframe src="https://open.spotify.com/embed/playlist/3GQGhZGZ8fiGdntzsgXh2Q?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe> -->
+
+    <script src="app.js"></script>
   </body>
 </html>
 
