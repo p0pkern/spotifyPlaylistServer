@@ -2,7 +2,7 @@ function generatePlaylist() {
 
     const req = new XMLHttpRequest();
     // Playlist must be put in as a query string with theme=[CHOSEN THEME] it is currently setup for workout
-    req.open("GET", 'http://localhost:8888/post-test?theme=workout', true);
+    req.open("GET", 'http://localhost:8888/get-playlist?theme=workout', true);
     req.onload = function() {
         let playlist = req.responseText;
         if (req.readyState == 4 && req.status >=200 && req.status < 400) {

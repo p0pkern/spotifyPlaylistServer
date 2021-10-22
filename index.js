@@ -32,7 +32,7 @@ spotifyApi.clientCredentialsGrant().then(
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.get("/post-test", (req, res) => {
+app.get("/get-playlist", (req, res) => {
     const theme = req.query.theme
     let randomPlayList = Math.floor(Math.random() * 10);
     let playList;
