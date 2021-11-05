@@ -22,11 +22,9 @@ Steps to get from 0 to Token:
 1. Create a Spotify Developer Account Link:[Spotify Developer](https://developer.spotify.com/dashboard/login)
 2. Login to your account and go to the Dashboard
 3. On the Dashboard create a new app
-![Image of Dashboard]
-(/imgs/dashboard.png)
+![Image of Dashboard](/imgs/dashboard.png)
 4. On your app you will be provided with a Client ID and a Client Secret (you need to click 'SHOW CLIENT SECRET' to see the secret key) these are important and should be protected.
-![Dashboard Credentials]
-(/imgs/appimage.png)
+![Dashboard Credentials](/imgs/appimage.png)
 5. Replace the CLIENT_ID, and CLIENT_SECRET portions of the index.js file with the proper information. **Please Do Not Upload Your Credentials to Github/Version control.** 
 6. Next, you need to have a redirect url. This is the callback url that Spotify uses to confirm that the website you send the key request from is trusted.
     * On your Dashboard under your app go to 'edit settings'
@@ -58,8 +56,7 @@ https://open.spotify.com/embed/playlist/3GQGhZGZ8fiGdntzsgXh2Q?utm_source=genera
 ```
 4. Enjoy your randomly generated playlist.
 
-![Rap Playlist]
-(/imgs/playlist.png)
+![Rap Playlist](/imgs/playlist.png)
 
 ## Contributing
 Pull requests are welcome.
