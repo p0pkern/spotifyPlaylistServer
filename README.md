@@ -4,6 +4,8 @@
 
 Hello,
 
+My name is Chris Peterman and I am a Computer Science college student at Oregon State University. I'm in my final year of school and will graduate Spring 2022.
+
 Creates a server that accepts a single theme tag and returns a random playlist using the Spotify Api.
 
 ## Installation - Server
