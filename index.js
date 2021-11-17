@@ -62,5 +62,27 @@ app.get("/get-playlist", (req, res) => {
     });
 })
 
+// This will provide a JSON object of multiple playlists of a selected theme
+app.get("/get-multi-playlist", (req, res) => {
+    const theme = req.query.theme
+    let playList;
+    getCredentials(); // Get the missing credentials if necessary
+    let jsonPlayLists = {};
+        
+    spotifyApi.searchPlaylists(theme)
+    .then(function(data) {
+        playList = data.body.playlists.items;
+        
+        for (let i = 0; i < playList.length; i++) {             
+            quotesRemoved = playList[i].id;
+            jsonPlayLists[playList[i].name] = 'https://open.spotify.com/embed/playlist/' + `${quotesRemoved}` + '?utm_source=generator'; 
+        }
+                
+        console.log(jsonPlayLists);
+        res.send(JSON.stringify(jsonPlayLists));
+    }, function(err) {
+        console.log('Something went wrong!', err);
+    });
+})
 
 app.listen(8888, () => console.log("Started on port 8888"));
