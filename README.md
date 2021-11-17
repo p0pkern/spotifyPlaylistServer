@@ -60,5 +60,18 @@ https://open.spotify.com/embed/playlist/3GQGhZGZ8fiGdntzsgXh2Q?utm_source=genera
 
 ![Rap Playlist](/imgs/playlist.png)
 
+This server also adds the ability to request a sequence of playlists for a themein the form of a JSON object. The object will be in the format of 'name of playlist' : 'url of playlist'
+
+1. Send a GET request to the following address. Replace the theme query with your own keyword.
+ 
+```html
+    http://flip1.engr.oregonstate.edu:1439/get-multi-playlist?theme=[THE THEME YOU WANT E.G. 'WORKOUT']
+```
+
+2. The server will send back a JSON object.
+
+3. Place the URL tag of the selected playlist from the JSON into the same iframe tag as highlighted above.
+
+
 ## Contributing
 Pull requests are welcome.
