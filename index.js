@@ -50,12 +50,8 @@ app.get("/get-playlist", (req, res) => {
 
     spotifyApi.searchPlaylists(theme)
     .then(function(data) {
-        // Spotify format is terrible. So I use util.inspect to get the data to something I can use
         playList = util.inspect(data.body.playlists.items[randomPlayList].id, false, null, true);
-        // This removes the extra quotes throughout after the conversion
         quotesRemoved = playList.replace(/[']/g, "");
-        // Send the link to the client ready to put in the src tag of an <iframe>
-        // The links come with encoded green text styling, so I had to use Strip to get rid of that
         res.send('https://open.spotify.com/embed/playlist/' + `${strip(quotesRemoved)}` + '?utm_source=generator');
     }, function(err) {
         console.log('Something went wrong!', err);
